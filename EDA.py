@@ -8,9 +8,9 @@ import os
 os.makedirs('plots', exist_ok=True)
 
 def salvar_plot(nome: str):
-    caminho = os.path.join('plots', f"{nome}" + '.png')
-    plt.savefig(caminho, dpi=300, bbox_inches='tight')
-    print('Gráfico salvo em:', caminho)
+    path = os.path.join('plots', f"{nome}" + '.png')
+    plt.savefig(path, dpi=300, bbox_inches='tight')
+    print('Gráfico salvo em:', path)
 
 #Importando o dataset
 df = pd.read_csv('data/emprestimos_concebidos.csv')
