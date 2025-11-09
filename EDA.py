@@ -3,14 +3,8 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+from plot_utils import salvar_plot
 import os
-
-os.makedirs('plots', exist_ok=True)
-
-def salvar_plot(nome: str):
-    path = os.path.join('plots', f"{nome}" + '.png')
-    plt.savefig(path, dpi=300, bbox_inches='tight')
-    print('Gráfico salvo em:', path)
 
 #Importando o dataset
 df = pd.read_csv('data/emprestimos_concebidos.csv')
@@ -60,6 +54,8 @@ print(df.groupby('loan_status')['loan_int_rate'].mean())
 #Boxplot para detectar outliers na renda
 sns.boxplot(data=df, y='person_income')
 plt.title('Distribuição de Renda')
+plt.ylabel('Renda em milhões')
+plt.tight_layout()
 plt.show()
 plt.close()
 """
@@ -68,8 +64,11 @@ Os out-liers já começam antes mesmo do primeiro milhão
 """
 
 #Linha para ver melhor a distribuição de renda
-sns.kdeplot(data=df["person_income"])
-plt.title("Linha kde para renda")
+sns.histplot(data=df, x="person_income", kde=True)
+plt.title("Total de empréstimos por renda")
+plt.xlabel('Renda em milhões')
+plt.ylabel('')
+plt.tight_layout()
 plt.show()
 plt.close()
 """
@@ -77,11 +76,42 @@ Analise do gráfico:
 Continuando com a lógica do gráfico anterior o pico da linha fica próximo ao 0
 """
 
+#Histplot para verificar a distribuição dos valores dos empréstimos
+sns.histplot(data=df, x='loan_amnt', kde=True)
+plt.title('Distribuição do valor dos empréstimos')
+plt.xlabel('Valor do empréstimo')
+plt.ylabel('')
+plt.tight_layout()
+salvar_plot("Histplot_Valor_Emprestimo")
+plt.show()
+plt.close()
+"""
+Análise do gráfico:
+A maior parte dos empréstimos são de valores abaixo de 10 mil
+"""
+
+#Boxplot para detectar outliers na renda
+sns.histplot(data=df, x='loan_int_rate', kde=True)
+plt.title('Distribuição do valor de juros nos empréstimos')
+plt.xlabel('Valor de juros em %')
+plt.ylabel('')
+plt.tight_layout()
+salvar_plot("Histplot_Porcentagem_Juros")
+plt.show()
+plt.close()
+"""
+Análise do gráfico:
+A Enorme maioria dos empréstimos possui uma taxa de juros entre 6 e 14%
+"""
+
 #Verificando a distribuição do loan_status
 df['loan_status_label'] = df['loan_status'].map({0: 'Pago', 1: 'Não pago'})
 ax = sns.countplot(x='loan_status_label', data=df, hue='loan_status', order=['Pago', 'Não pago'])
 for container in ax.containers:
     ax.bar_label(container, fmt='%d', label_type='edge', fontsize=10)
+plt.xlabel('Status')
+plt.ylabel('')
+plt.tight_layout()
 salvar_plot("Countplot_Status_Emprestimo")
 plt.show()
 plt.close()
@@ -105,6 +135,9 @@ Percentual da renda que será destinada ao pagamento do empréstimo.
 
 sns.boxplot(data=df, y='loan_status_label', x='loan_percent_income')
 plt.title('Distribuição de Pagamento por Porcentagem da Renda')
+plt.xlabel('Porcentagem da renda (1 = 100%)')
+plt.ylabel('')
+plt.tight_layout()
 salvar_plot("Boxplot_Pagamento_Por_Porcentagem_Renda")
 plt.show()
 """
@@ -139,6 +172,9 @@ df['income_range'] = df['income_range'].astype(str).replace(['500k~1m', '>1m'], 
 
 #Mesmo gráfico que o anterior, porém feito após a junção das faixas de renda acima de 500 mil
 sns.countplot(data=df, x='income_range', hue='loan_status_label', order=["<50k", "50~100k", "100~500k", ">500k"])
+plt.xlabel('Faixa de Renda')
+plt.ylabel('')
+plt.tight_layout()
 salvar_plot("Countplot_Pagamento_Por_Faixa_Renda")
 plt.show()
 
@@ -146,6 +182,8 @@ plt.show()
 Resumo do EDA:
 - 78% dos empréstimos foram pagos integralmente.
 - Pessoas com renda anual < 50k apresentam maior taxa de inadimplência.
+- A maior parte dos empréstimos possui um valor abaixo de 10 mil
+- Os juros se concentram numa faixa entre 6 e 14%
 - A correlação mais forte com inadimplência é a razão 'loan_percent_income'.
 - O tratamento de nulos foi realizado de forma consistente, preservando a integridade dos dados.
 """
