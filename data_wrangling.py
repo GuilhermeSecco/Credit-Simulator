@@ -45,7 +45,7 @@ def identificar_colunas(df):
 
 def tratar_outliers(X_train, X_test, col, metodo):
     """
-    Trata outliers em uma coluna específica usando o método definido.
+    Trata outliers em uma coluna específica usando o métod definido.
     Parâmetros:
     :X_train, X_test ⇾ DataFrames de treino e teste:
     :col ⇾ nome da coluna:
