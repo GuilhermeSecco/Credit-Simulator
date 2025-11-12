@@ -1,8 +1,10 @@
 # 💳 Simulador de Crédito Inteligente
 
 > Um simulador interativo de aprovação de crédito com **Flask**, **XGBoost** e **Machine Learning**.
+<img width="1255" height="670" alt="image" src="https://github.com/user-attachments/assets/66e7ae12-c067-4c21-b204-8a8932b07166" />
 
 Este projeto faz parte do meu portfólio de Data Science e Machine Learning.  
+
 O sistema utiliza um modelo **XGBoost Classifier** treinado para prever o risco de inadimplência com base em informações financeiras e demográficas do usuário.
 
 ---
@@ -133,10 +135,7 @@ O resultado é renderizado na interface com explicações e gráficos.
 ## 🖥️ Demonstração
 ### 👉 [Acessar Simulador de Crédito](https://portifolio-guilhermesecco.onrender.com/projetos/simulador-credito)
 
-
-## 🧑‍💻 Autor
-
-### Guilherme Fernandes Secco
+## Links
 
 ### [💼LinkedIn](https://www.linkedin.com/in/guilherme-f-secco/)
 
