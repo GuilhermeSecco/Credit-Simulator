@@ -19,6 +19,14 @@ if "person_emp_length" in X_test.columns:
 print("Coluna 'person_emp_length' removida com sucesso!")
 print(f"Novas dimensões -> X_train: {X_train.shape}, X_test: {X_test.shape}")
 
+#Removendo a Coluna cb_person_cred_hist_length
+if "cb_person_cred_hist_length" in X_train.columns:
+    X_train = X_train.drop(columns=["cb_person_cred_hist_length"])
+if "cb_person_cred_hist_length" in X_test.columns:
+    X_test = X_test.drop(columns=["cb_person_cred_hist_length"])
+print("Coluna 'cb_person_cred_hist_length' removida com sucesso!")
+print(f"Novas dimensões -> X_train: {X_train.shape}, X_test: {X_test.shape}")
+
 #Verificando se ainda existem colunas com valores nulos
 print(X_train.isnull().sum())
 
