@@ -1,15 +1,13 @@
-# 💳 Simulador de Crédito Inteligente
+# 💳 Credit Approval Simulator
 
-> Um simulador interativo de aprovação de crédito com **Flask**, **XGBoost** e **Machine Learning**.
+> End-to-end credit approval simulator using XGBoost (AUC 0.95), featuring feature engineering, class imbalance handling, and an interactive Flask interface with explainability.
 <img width="1255" height="670" alt="image" src="https://github.com/user-attachments/assets/66e7ae12-c067-4c21-b204-8a8932b07166" />
 
-Este projeto faz parte do meu portfólio de Data Science e Machine Learning.  
-
-O sistema utiliza um modelo **XGBoost Classifier** treinado para prever o risco de inadimplência com base em informações financeiras e demográficas do usuário.
+<br>The system uses **XGBoost Classifier** trained to predict default risk using user's financial and demographic information.
 
 ---
 
-## 🚀 Funcionalidades
+## 🚀 Features
 
 - 🧠 **Predição automática** de aprovação de crédito com base no perfil do cliente  
 - 💰 **Cálculo da taxa de juros** conforme o grau de crédito (A → G)  
@@ -21,7 +19,7 @@ O sistema utiliza um modelo **XGBoost Classifier** treinado para prever o risco 
 
 ---
 
-## ⚙️ Como funciona
+## ⚙️ How it Works
 
 O usuário preenche um formulário com:
 - Idade  
