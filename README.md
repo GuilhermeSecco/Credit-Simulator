@@ -131,7 +131,7 @@ O Flask calcula o grau de crédito e taxa correspondente.
 O resultado é renderizado na interface com explicações e gráficos.
 
 ## 🖥️ Demonstração
-### 👉 [Acessar Simulador de Crédito](https://portifolio-guilhermesecco.onrender.com/projetos/simulador-credito)
+### 👉 [Acessar Simulador de Crédito](https://portifolio-guilhermesecco.onrender.com/projects/credit-simulator)
 
 ## Links
 
